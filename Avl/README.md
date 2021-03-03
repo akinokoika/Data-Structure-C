@@ -5,8 +5,8 @@ C语言实现的Avl树
 ### 输出样例
 
 ```cpp
-// This is adelson velsky and landis tree.
-// Init from 1 to 9.
+This is adelson velsky and landis tree.
+Init from 1 to 9.
 3(3)
 |------ 2(1)
 |   |------ 1(0)
