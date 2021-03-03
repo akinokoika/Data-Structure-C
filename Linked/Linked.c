@@ -1,41 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*	å·²å®ç°çš„åŠŸèƒ½ï¼š
-/*		é“¾è¡¨
+/*	ÒÑÊµÏÖµÄ¹¦ÄÜ£º
+/*		Á´±í
 /*		{
-/*			å»ºç«‹ï¼Œä¸¤ç§æŒ‰åºæŸ¥æ‰¾ï¼ŒæŒ‰å€¼æŸ¥æ‰¾
-/*			æ’å…¥ï¼Œåˆ é™¤ï¼Œæ‘§æ¯ï¼Œè¾“å‡ºï¼Œæ±‚é•¿åº¦
-/*			è¿­ä»£åè½¬ä¸é€’å½’åè½¬
-/*			é€’å½’åè½¬å‰nä¸ªï¼Œé€’å½’åè½¬nåˆ°m
-/*			åè½¬måˆ°nçš„ç»“ç‚¹
-/*			å¾ªç¯é“¾è¡¨æµ‹è¯•
-/*			æ•°ç»„æ¨¡æ‹Ÿé“¾è¡¨ï¼Œè¾“å‡ºï¼Œæ’å…¥
+/*			½¨Á¢£¬Á½ÖÖ°´Ğò²éÕÒ£¬°´Öµ²éÕÒ
+/*			²åÈë£¬É¾³ı£¬´İ»Ù£¬Êä³ö£¬Çó³¤¶È
+/*			µü´ú·´×ªÓëµİ¹é·´×ª
+/*			µİ¹é·´×ªÇ°n¸ö£¬µİ¹é·´×ªnµ½m
+/*			·´×ªmµ½nµÄ½áµã
+/*			Ñ­»·Á´±í²âÊÔ
+/*			Êı×éÄ£ÄâÁ´±í£¬Êä³ö£¬²åÈë
 /*		}
 /*
 /*	*/
 
-// ç»“ç‚¹ç»“æ„ä½“å®šä¹‰
+// ½áµã½á¹¹Ìå¶¨Òå
 typedef struct node
 {
 	int data;
 	struct node *next;
 }linker;
 
-// å…¨å±€è¿”å›æŒ‡é’ˆç±»å‹å®šä¹‰
+// È«¾Ö·µ»ØÖ¸ÕëÀàĞÍ¶¨Òå
 typedef linker * king;
 
-// å…¨å±€å±€éƒ¨æŒ‡é’ˆç±»å‹å®šä¹‰
+// È«¾Ö¾Ö²¿Ö¸ÕëÀàĞÍ¶¨Òå
 typedef linker * kitchen;
 
-// å…¨å±€å·¥ä½œæŒ‡é’ˆå£°æ˜
-// påˆ›å»ºï¼Œtrvä¸´æ—¶ï¼Œfé‡Šæ”¾ï¼Œbä¼ é€’
+// È«¾Ö¹¤×÷Ö¸ÕëÉùÃ÷
+// p´´½¨£¬trvÁÙÊ±£¬fÊÍ·Å£¬b´«µİ
 linker *head,*p,*t,*r,*v,*f,*b;
 
-// å…¨å±€ä¸´æ—¶å˜é‡
+// È«¾ÖÁÙÊ±±äÁ¿
 int val_num_j;
 
-// å‡½æ•°æ¥å£åè®®å£°æ˜
+// º¯Êı½Ó¿ÚĞ­ÒéÉùÃ÷
 king create_linker(void);
 king find_num_linker(king head,int num);
 king find_num_head_linker(king head,int num);
@@ -63,7 +63,7 @@ void simulation_show_linker(int data[],int right[]);
 int simulation_insert_linker(int data[],int right[],int n,int x,int num);
 
 
-// ä¸»å‡½æ•°
+// Ö÷º¯Êı
 int main()
 {
 	int result;
@@ -85,36 +85,36 @@ int main()
 	
 	head=create_linker();
 	
-	printf("åˆ›å»ºé“¾è¡¨ï¼š");
+	printf("´´½¨Á´±í£º");
 	show_linker(head);
 	printf("\n");
 	
 	//head=test_linker(head);
 	
-	printf("åè½¬é“¾è¡¨ï¼š");
+	printf("·´×ªÁ´±í£º");
 	head=reverse_linker(head);
 	
 	show_linker(head);
 	printf("\n");
 	
-	printf("é€’å½’åè½¬é“¾è¡¨ï¼š");
+	printf("µİ¹é·´×ªÁ´±í£º");
 	head=reverse_recursive_linker(head);
 	
 	show_linker(head);
 	printf("\n");
 	
-	printf("åè½¬é“¾è¡¨å‰3ä¸ªï¼š");
+	printf("·´×ªÁ´±íÇ°3¸ö£º");
 	head=reverse_recursive_n_linker(head,3);
 	
 	show_linker(head);
 	printf("\n");
 	
-	printf("é€’å½’åè½¬é“¾è¡¨ä»2åˆ°4ï¼š");
+	printf("µİ¹é·´×ªÁ´±í´Ó2µ½4£º");
 	head=reverse_recursive_m_n_linker(head,2,4);
 	show_linker(head);
 	printf("\n");
 	
-	printf("åè½¬é“¾è¡¨ä»2åˆ°4ï¼š");
+	printf("·´×ªÁ´±í´Ó2µ½4£º");
 	head=reverse_m_n_linker(head,2,4);
 	show_linker(head);
 	printf("\n");
@@ -125,33 +125,33 @@ int main()
 	
 	
 	//
-	printf("æŸ¥æ‰¾é“¾è¡¨ç¬¬1ä¸ªï¼š");
+	printf("²éÕÒÁ´±íµÚ1¸ö£º");
 	t=find_num_linker(head,1);
 	if(t!=0)
 	{
-		printf("æ‰¾åˆ°%d",t->data);
+		printf("ÕÒµ½%d",t->data);
 	}
 	else
 	{
-		printf("æœªæ‰¾åˆ°");
+		printf("Î´ÕÒµ½");
 	}
 	printf("\n");
 	
 	//
-	printf("æŸ¥æ‰¾é“¾è¡¨ç¬¬ä¸€ä¸ªå€¼ä¸º3ï¼š");
+	printf("²éÕÒÁ´±íµÚÒ»¸öÖµÎª3£º");
 	t=find_val_linker(head,3);
 	if(t!=0)
 	{
-		printf("æ‰¾åˆ°3ï¼Œåºå·æ˜¯%d",val_num_j);
+		printf("ÕÒµ½3£¬ĞòºÅÊÇ%d",val_num_j);
 	}
 	else
 	{
-		printf("æœªæ‰¾åˆ°");
+		printf("Î´ÕÒµ½");
 	}
 	printf("\n");
 	
 	//
-	printf("æ’å…¥é“¾è¡¨åœ¨ç¬¬1ä¸ªæ’å…¥21ï¼š");
+	printf("²åÈëÁ´±íÔÚµÚ1¸ö²åÈë21£º");
 	result=insert_linker(head,21,1);
 	if(result!=0)
 	{
@@ -159,12 +159,12 @@ int main()
 	}
 	else
 	{
-		printf("æœªæ‰¾åˆ°");
+		printf("Î´ÕÒµ½");
 	}
 	printf("\n");
 	
 	//
-	printf("ç§»é™¤é“¾è¡¨ç¬¬5ä¸ªï¼š");
+	printf("ÒÆ³ıÁ´±íµÚ5¸ö£º");
 	result=remove_linker(head,5);
 	if(result!=0)
 	{
@@ -172,31 +172,31 @@ int main()
 	}
 	else
 	{
-		printf("æœªæ‰¾åˆ°");
+		printf("Î´ÕÒµ½");
 	}
 	printf("\n");
 	
 	//
-	printf("æ±‚é“¾è¡¨é•¿åº¦ï¼š");
+	printf("ÇóÁ´±í³¤¶È£º");
 	result=length_linker(head);
 	printf("%d",result);
 	printf("\n");
 	
 	//
-	printf("æ’å…¥æ•°ç»„æ¨¡æ‹Ÿé“¾è¡¨ï¼š");
+	printf("²åÈëÊı×éÄ£ÄâÁ´±í£º");
 	simulation_linker(head,33,1);
 	printf("\n");
 	
 	//
-	printf("å¾ªç¯é“¾è¡¨æµ‹è¯•ï¼š");
+	printf("Ñ­»·Á´±í²âÊÔ£º");
 	head=cycle_linker(head);
 	
 	//
-	printf("æ¯ç­é“¾è¡¨ï¼š");
+	printf("»ÙÃğÁ´±í£º");
 	head=havoc_linker(head);
 	if(head==0)
 	{
-		printf("å·²é”€æ¯é“¾è¡¨");
+		printf("ÒÑÏú»ÙÁ´±í");
 	}
 	printf("\n");
 	
@@ -206,7 +206,7 @@ int main()
 	return 0;
 }
 
-// å»ºç«‹é“¾è¡¨
+// ½¨Á¢Á´±í
 king create_linker()
 {
 	int i,n,x;
@@ -234,7 +234,7 @@ king create_linker()
 	return head;
 }
 
-// æŒ‰åºæŸ¥æ‰¾ ä»å¼€å§‹ç»“ç‚¹ åˆ°ç©º
+// °´Ğò²éÕÒ ´Ó¿ªÊ¼½áµã µ½¿Õ
 king find_num_linker(king head,int num)
 {
 	if(head==NULL)
@@ -256,7 +256,7 @@ king find_num_linker(king head,int num)
 	return t;
 }
 
-// æŒ‰åºæŸ¥æ‰¾ ä»å¤´ç»“ç‚¹ åˆ°å°¾ç»“ç‚¹
+// °´Ğò²éÕÒ ´ÓÍ·½áµã µ½Î²½áµã
 king find_num_head_linker(king head,int num)
 {
 	if(head==NULL)
@@ -267,8 +267,8 @@ king find_num_head_linker(king head,int num)
 	int j;
 	t=head;
 	
-	// å¾ªç¯æ¡ä»¶åº”ä¸ºt->next!=NULL
-	// ç¡®ä¿æŒ‡é’ˆä¸ä¼šæŒ‡å‘é“¾è¡¨å¤–é¢
+	// Ñ­»·Ìõ¼şÓ¦Îªt->next!=NULL
+	// È·±£Ö¸Õë²»»áÖ¸ÏòÁ´±íÍâÃæ
 	for(j=1;t->next!=NULL&&j<num;j++)
 	{
 		t=t->next;
@@ -280,7 +280,7 @@ king find_num_head_linker(king head,int num)
 	return t;
 }
 
-// æŒ‰å€¼æŸ¥æ‰¾
+// °´Öµ²éÕÒ
 king find_val_linker(king head,int val)
 {
 	if(head==NULL)
@@ -299,16 +299,16 @@ king find_val_linker(king head,int val)
 	{
 		return 0;
 	}
-	// è¿”å›æ‰€æŸ¥æ‰¾å€¼çš„åºå·
+	// ·µ»ØËù²éÕÒÖµµÄĞòºÅ
 	val_num_j=j;
 	return t;
 }
 
-// é“¾è¡¨æ’å…¥
+// Á´±í²åÈë
 int insert_linker(king head,int x,int num)
 {
-	// è°ƒç”¨ä»å¤´ç»“ç‚¹å¼€å§‹æŸ¥æ‰¾çš„å‡½æ•°
-	// å¯ä»¥å®ç°å¯¹å•é“¾è¡¨çš„1å·ç»“ç‚¹çš„æ’å…¥
+	// µ÷ÓÃ´ÓÍ·½áµã¿ªÊ¼²éÕÒµÄº¯Êı
+	// ¿ÉÒÔÊµÏÖ¶Ôµ¥Á´±íµÄ1ºÅ½áµãµÄ²åÈë
 	t=find_num_head_linker(head,num);
 	if(t==0)
 	{
@@ -322,7 +322,7 @@ int insert_linker(king head,int x,int num)
 	return 1;
 }
 
-// é“¾è¡¨åˆ é™¤
+// Á´±íÉ¾³ı
 int remove_linker(king head,int num)
 {
 	t=find_num_head_linker(head,num);
@@ -337,7 +337,7 @@ int remove_linker(king head,int num)
 	return 1;
 }
 
-// é“¾è¡¨æ¯ç­
+// Á´±í»ÙÃğ
 king havoc_linker(king head)
 {
 	t=head;
@@ -351,7 +351,7 @@ king havoc_linker(king head)
 	return head;
 }
 
-// è¾“å‡ºé“¾è¡¨
+// Êä³öÁ´±í
 void show_linker(king head)
 {
 	if(head==NULL)
@@ -369,7 +369,7 @@ void show_linker(king head)
 	}
 }
 
-// é“¾è¡¨é•¿åº¦
+// Á´±í³¤¶È
 int length_linker(king head)
 {
 	if(head==NULL)
@@ -387,7 +387,7 @@ int length_linker(king head)
 	return j;
 }
 
-// æ—§ç‰ˆé“¾è¡¨é“¾è¡¨
+// ¾É°æÁ´±íÁ´±í
 king reverse_old_linker(king head)
 {
 	
@@ -406,8 +406,8 @@ king reverse_old_linker(king head)
 		v->next=t;
 		t=v;
 		v=r;
-		// å½“ræŒ‡å‘æœ€åä¸€ä¸ªç»“ç‚¹æ—¶
-		// ä¸èƒ½æ‰§è¡Œr=r->next
+		// µ±rÖ¸Ïò×îºóÒ»¸ö½áµãÊ±
+		// ²»ÄÜÖ´ĞĞr=r->next
 		if(r->next==NULL)
 		{
 			v->next=t;
@@ -421,7 +421,7 @@ king reverse_old_linker(king head)
 	return head;
 }
 
-// é“¾è¡¨åè½¬
+// Á´±í·´×ª
 king reverse_linker(king head)
 {
 	if(head==NULL)
@@ -429,9 +429,9 @@ king reverse_linker(king head)
 		return 0;
 	}
 	
-	// å¤„ç†å¼€å§‹ç»“ç‚¹çš„nexté—®é¢˜
+	// ´¦Àí¿ªÊ¼½áµãµÄnextÎÊÌâ
 	t=NULL;
-	// å¤„ç†å¸¦å¤´ç»“ç‚¹çš„å•é“¾è¡¨
+	// ´¦Àí´øÍ·½áµãµÄµ¥Á´±í
 	v=head->next;
 	r=v;
 	
@@ -441,15 +441,15 @@ king reverse_linker(king head)
 		v->next=t;
 		t=v;
 		v=r;
-		// é€€å‡ºå¾ªç¯æ—¶vå’Œrä¸ºNULL
-		// tä¸ºåè½¬åçš„å¼€å§‹ç»“ç‚¹
+		// ÍË³öÑ­»·Ê±vºÍrÎªNULL
+		// tÎª·´×ªºóµÄ¿ªÊ¼½áµã
 	}
 	
 	head->next=t;
 	return head;
 }
 
-// é“¾è¡¨åè½¬nåˆ°m
+// Á´±í·´×ªnµ½m
 king reverse_m_n_linker(king head,int m,int n)
 {
 	if(head==NULL)
@@ -458,17 +458,17 @@ king reverse_m_n_linker(king head,int m,int n)
 	}
 	
 	kitchen pre;
-	// ä»¥å¸¦å¤´ç»“ç‚¹å½¢å¼æŸ¥æ‰¾mç»“ç‚¹ï¼Œè¿”å›mçš„å‰é©±ç»“ç‚¹
+	// ÒÔ´øÍ·½áµãĞÎÊ½²éÕÒm½áµã£¬·µ»ØmµÄÇ°Çı½áµã
 	pre=find_num_head_linker(head,m);
-	// ä»¥ä¸å¸¦å¤´ç»“ç‚¹å½¢å¼æŸ¥æ‰¾nç»“ç‚¹ï¼Œè¿”å›nç»“ç‚¹
+	// ÒÔ²»´øÍ·½áµãĞÎÊ½²éÕÒn½áµã£¬·µ»Øn½áµã
 	r=find_num_linker(head,n);
 	
-	// pre->nextä¼ å…¥mç»“ç‚¹
-	// r->nextä¼ å…¥nçš„åç»§ç»“ç‚¹
-	// å‡½æ•°è¿”å›é“¾è¡¨åŒºé—´æ˜¯måˆ°n-1
+	// pre->next´«Èëm½áµã
+	// r->next´«ÈënµÄºó¼Ì½áµã
+	// º¯Êı·µ»ØÁ´±íÇø¼äÊÇmµ½n-1
 	t=reverse_interval_linker(pre->next,r->next);
 	
-	// åŸé“¾è¡¨å‰åè¿æ¥ä¸Šåè½¬åçš„é“¾è¡¨éƒ¨åˆ†
+	// Ô­Á´±íÇ°ºóÁ¬½ÓÉÏ·´×ªºóµÄÁ´±í²¿·Ö
 	pre->next=t;
 	b->next=r;
 	
@@ -479,11 +479,11 @@ king reverse_m_n_linker(king head,int m,int n)
 }
 
 
-// é“¾è¡¨åè½¬ä»headåˆ°intervalçš„å‰é©±ç»“ç‚¹
+// Á´±í·´×ª´Óheadµ½intervalµÄÇ°Çı½áµã
 king reverse_interval_linker(king head,king interval)
 {
 	t=NULL;
-	// å¤„ç†ä¸å¸¦å¤´ç»“ç‚¹çš„å•é“¾è¡¨
+	// ´¦Àí²»´øÍ·½áµãµÄµ¥Á´±í
 	v=head;
 	r=v;
 	
@@ -495,16 +495,16 @@ king reverse_interval_linker(king head,king interval)
 		v->next=t;
 		t=v;
 		v=r;
-		// é€€å‡ºå¾ªç¯æ—¶vå’ŒræŒ‡å‘interval
-		// tä¸ºvçš„å‰é©±ç»“ç‚¹
+		// ÍË³öÑ­»·Ê±vºÍrÖ¸Ïòinterval
+		// tÎªvµÄÇ°Çı½áµã
 	}
 	
-	// è¿”å›æ—¶tä¸ºå·²åè½¬é“¾è¡¨éƒ¨åˆ†çš„å¼€å§‹ç»“ç‚¹
-	// è¿”å›åçš„é“¾è¡¨ä¸åŒ…æ‹¬interval
+	// ·µ»ØÊ±tÎªÒÑ·´×ªÁ´±í²¿·ÖµÄ¿ªÊ¼½áµã
+	// ·µ»ØºóµÄÁ´±í²»°üÀ¨interval
 	return t;
 }
 /*
-// kä¸ªä¸€ç»„åè½¬é“¾è¡¨
+// k¸öÒ»×é·´×ªÁ´±í
 king reverse_group_linker(king head,int k)
 {
 	if(head==NULL)
@@ -529,7 +529,7 @@ king reverse_group_linker(king head,int k)
 	return head_new;
 }*/
 
-// é“¾è¡¨é€’å½’åè½¬
+// Á´±íµİ¹é·´×ª
 king reverse_recursive_linker(king head)
 {
 	if(head==NULL)
@@ -537,20 +537,20 @@ king reverse_recursive_linker(king head)
 		return 0;
 	}
 	
-	// å¤„ç†å¸¦æœ‰å¤´ç»“ç‚¹çš„å•é“¾è¡¨
+	// ´¦Àí´øÓĞÍ·½áµãµÄµ¥Á´±í
 	t=head->next;
 	r=reverse_recursive_stack_linker(t);
 	head->next=r;
 	return head;
 }
 
-// é“¾è¡¨é€’å½’åè½¬ æ ˆ
+// Á´±íµİ¹é·´×ª Õ»
 king reverse_recursive_stack_linker(king head)
 {
 	if(head->next==NULL)
 	{
-		// æ­£å¸¸é“¾è¡¨æ­¤å¤„æ˜¯æœ€åä¸€ä¸ªæ ˆï¼Œä»æ­¤å¤„è¿”å›
-		// å¦‚æœé“¾è¡¨åªæœ‰ä¸€ä¸ªç»“ç‚¹ï¼Œç›´æ¥è¿”å›head
+		// Õı³£Á´±í´Ë´¦ÊÇ×îºóÒ»¸öÕ»£¬´Ó´Ë´¦·µ»Ø
+		// Èç¹ûÁ´±íÖ»ÓĞÒ»¸ö½áµã£¬Ö±½Ó·µ»Øhead
 		return head;
 	}
 	r=reverse_recursive_stack_linker(head->next);
@@ -559,7 +559,7 @@ king reverse_recursive_stack_linker(king head)
 	return r;
 }
 
-// é“¾è¡¨é€’å½’åè½¬ åè½¬å‰nä¸ªç»“ç‚¹
+// Á´±íµİ¹é·´×ª ·´×ªÇ°n¸ö½áµã
 king reverse_recursive_n_linker(king head,int n)
 {
 	if(head==NULL)
@@ -577,34 +577,34 @@ king reverse_recursive_n_linker(king head,int n)
 	return head;
 }
 
-// é“¾è¡¨é€’å½’åè½¬ åè½¬å‰nä¸ªç»“ç‚¹ æ ˆ
+// Á´±íµİ¹é·´×ª ·´×ªÇ°n¸ö½áµã Õ»
 king reverse_recursive_n_stack_linker(king head,int n)
 {
-	// æ¯æ¬¡å…¥æ ˆé€’å½’ä½¿n-1
-	// å½“n==1æ—¶ï¼Œä½äºæœ€åä¸€ä¸ªæ ˆï¼ŒheadæŒ‡å‘ç¬¬nä¸ªç»“ç‚¹
-	// åè½¬å‰1ä¸ªç»“ç‚¹æ—¶ï¼Œç›´æ¥è¿”å›head
+	// Ã¿´ÎÈëÕ»µİ¹éÊ¹n-1
+	// µ±n==1Ê±£¬Î»ÓÚ×îºóÒ»¸öÕ»£¬headÖ¸ÏòµÚn¸ö½áµã
+	// ·´×ªÇ°1¸ö½áµãÊ±£¬Ö±½Ó·µ»Øhead
 	if(n==1)
 	{
-		// vä¸ºç¬¬nä¸ªç»“ç‚¹çš„åç»§èŠ‚ç‚¹
+		// vÎªµÚn¸ö½áµãµÄºó¼Ì½Úµã
 		v=head->next;
 		return head;
 	}
 	r=reverse_recursive_n_stack_linker(head->next,n-1);
 	head->next->next=head;
-	// åè½¬åçš„né“¾è¡¨å’ŒåŸé“¾è¡¨è¿æ¥
+	// ·´×ªºóµÄnÁ´±íºÍÔ­Á´±íÁ¬½Ó
 	head->next=v;
 	return r;
 }
 
 
-// é“¾è¡¨é€’å½’åè½¬ åè½¬ä»måˆ°nçš„ç»“ç‚¹
+// Á´±íµİ¹é·´×ª ·´×ª´Ómµ½nµÄ½áµã
 king reverse_recursive_m_n_linker(king head,int m,int n)
 {
 	if(head==NULL)
 	{
 		return 0;
 	}
-	// åˆ¤æ–­åè½¬åŒºé—´çš„æœ‰æ•ˆæ€§
+	// ÅĞ¶Ï·´×ªÇø¼äµÄÓĞĞ§ĞÔ
 	if(n>length_linker(head)||m>n)
 	{
 		return head;
@@ -616,24 +616,24 @@ king reverse_recursive_m_n_linker(king head,int m,int n)
 	return head;
 }
 
-// é“¾è¡¨é€’å½’åè½¬ åè½¬ä»måˆ°nçš„ç»“ç‚¹ æ ˆ
+// Á´±íµİ¹é·´×ª ·´×ª´Ómµ½nµÄ½áµã Õ»
 king reverse_recursive_m_n_stack_linker(king head,int m,int n)
 {
-	// å½“m==1æ—¶ï¼Œç›¸å½“äºæ‰§è¡Œåè½¬å‰nä¸ªç»“ç‚¹
+	// µ±m==1Ê±£¬Ïàµ±ÓÚÖ´ĞĞ·´×ªÇ°n¸ö½áµã
 	if(m==1)
 	{
-		// è¿”å›åè½¬åçš„måˆ°nçš„é“¾è¡¨
+		// ·µ»Ø·´×ªºóµÄmµ½nµÄÁ´±í
 		return reverse_recursive_n_stack_linker(head,n);
 	}
 	
-	// ä½¿headå‘åç§»åŠ¨ï¼Œç›´åˆ°æŒ‡å‘mæ‰€åœ¨ç»“ç‚¹æ—¶m==1
-	// è¿”å›æ—¶ä½¿å‰é©±ç»“ç‚¹head->nextæŒ‡å‘åè½¬é“¾è¡¨
+	// Ê¹headÏòºóÒÆ¶¯£¬Ö±µ½Ö¸ÏòmËùÔÚ½áµãÊ±m==1
+	// ·µ»ØÊ±Ê¹Ç°Çı½áµãhead->nextÖ¸Ïò·´×ªÁ´±í
 	head->next=reverse_recursive_m_n_stack_linker(head->next,m-1,n-1);
 	return head;
 }
 
 	
-// è¾“å‡ºé“¾è¡¨ç»“æ„æµ‹è¯•
+// Êä³öÁ´±í½á¹¹²âÊÔ
 king test_linker(king head)
 {
 	printf("head=%p,head->next=%p,head->data=%d\n",head,head->next,head->data);
@@ -649,18 +649,18 @@ king test_linker(king head)
 	return head;
 }
 
-// å¾ªç¯é“¾è¡¨æµ‹è¯•
+// Ñ­»·Á´±í²âÊÔ
 king cycle_linker(king head)
 {
 	r=head->next;
-	// tæŒ‡å‘å¼€å§‹ç»“ç‚¹
+	// tÖ¸Ïò¿ªÊ¼½áµã
 	t=r;
 	while(r->next!=NULL)
 	{
 		r=r->next;
 	}
-	// ræŒ‡å‘å°¾ç»“ç‚¹
-	// å°¾ç»“ç‚¹çš„åé©±ç»“ç‚¹æŒ‡å‘å¼€å§‹ç»“ç‚¹
+	// rÖ¸ÏòÎ²½áµã
+	// Î²½áµãµÄºóÇı½áµãÖ¸Ïò¿ªÊ¼½áµã
 	r->next=t;
 	
 	//printf("r=%d,r->next=%d",r->data,r->next->data);
@@ -669,7 +669,7 @@ king cycle_linker(king head)
 	int size=1;
 	
 	cycle_r=r->next;
-	// å¾ªç¯é“¾è¡¨çš„éå†
+	// Ñ­»·Á´±íµÄ±éÀú
 	while(cycle_r!=r)
 	{
 		cycle_r=cycle_r->next;
@@ -682,21 +682,21 @@ printf("r=%d,cycle_r=%d,size=%d\n",r->data,cycle_r->data,size);
 	return head;
 }
 
-// æ•°ç»„æ¨¡æ‹Ÿé“¾è¡¨
+// Êı×éÄ£ÄâÁ´±í
 king simulation_linker(king head,int x,int num)
 {
-	// nä¿å­˜é“¾è¡¨é•¿åº¦ï¼Œsizeå»ºç«‹æ•°ç»„ä¸‹æ ‡
+	// n±£´æÁ´±í³¤¶È£¬size½¨Á¢Êı×éÏÂ±ê
 	int size=length_linker(head);
 	int n=size++;
-	// å¢åŠ æ•°ç»„æœ€å¤§ä¸‹æ ‡ï¼Œä¸ºæ’å…¥æ•°æ®é¢„ç•™ä½ç½®
+	// Ôö¼ÓÊı×é×î´óÏÂ±ê£¬Îª²åÈëÊı¾İÔ¤ÁôÎ»ÖÃ
 	if(x!=0)
 	{
 		size++;
 	}
-	// dataæ•°ç»„ä¿å­˜æ•°æ®ï¼Œrightæ•°ç»„ä¿å­˜æ•°ç»„ä¸‹æ ‡
+	// dataÊı×é±£´æÊı¾İ£¬rightÊı×é±£´æÊı×éÏÂ±ê
 	int data[size],right[size];
 	
-	// æ•°ç»„é“¾è¡¨åˆå§‹åŒ–
+	// Êı×éÁ´±í³õÊ¼»¯
 	t=head;
 	for(int i=0;i<=n;i++)
 	{
@@ -706,23 +706,23 @@ king simulation_linker(king head,int x,int num)
 	for(int i=0;i<=n;i++)
 	{
 		int j=i;
-		// rightæ•°ç»„æœ€åæœ‰æ•ˆä¸‹æ ‡çš„å€¼ä¸º0
-		// è¡¨ç¤ºæ¨¡æ‹Ÿé“¾è¡¨çš„å°¾æŒ‡é’ˆ
+		// rightÊı×é×îºóÓĞĞ§ÏÂ±êµÄÖµÎª0
+		// ±íÊ¾Ä£ÄâÁ´±íµÄÎ²Ö¸Õë
 		if(i==n)
 		{
 			right[i]=0;
 			break;
 		}
 		
-		// è¡¨ç¤ºæ¨¡æ‹Ÿé“¾è¡¨çš„æŒ‡é’ˆæŒ‡å‘ä¸‹ä¸€ä¸ªæ•°æ®
+		// ±íÊ¾Ä£ÄâÁ´±íµÄÖ¸ÕëÖ¸ÏòÏÂÒ»¸öÊı¾İ
 		right[i]=j+1;
 	}
 	
-	// æ’å…¥æ•°æ®ä¸ä¸º0æ—¶è¿›è¡Œæ’å…¥	
+	// ²åÈëÊı¾İ²»Îª0Ê±½øĞĞ²åÈë	
 	if(x!=0)
 	{
 		simulation_insert_linker(data,right,n,x,num);
-		// å¯¹åŸé“¾è¡¨è¿›è¡ŒåŒæ­¥æ’å…¥
+		// ¶ÔÔ­Á´±í½øĞĞÍ¬²½²åÈë
 		insert_linker(head,x,num);
 	}
 		
@@ -731,36 +731,36 @@ king simulation_linker(king head,int x,int num)
 	return head;
 }
 
-// è¾“å‡ºæ¨¡æ‹Ÿé“¾è¡¨
+// Êä³öÄ£ÄâÁ´±í
 void simulation_show_linker(int data[],int right[])
 {
 	for(int i=0;right[i]!=0;)
 	{
-		// rightæ•°ç»„ä»0å¼€å§‹ï¼Œdataæ•°ç»„ä»1å¼€å§‹
+		// rightÊı×é´Ó0¿ªÊ¼£¬dataÊı×é´Ó1¿ªÊ¼
 		printf("%d ",data[right[i]]);
-		// è¡¨ç¤ºæ¨¡æ‹Ÿé“¾è¡¨å·¥ä½œæŒ‡é’ˆå‘åç§»åŠ¨
+		// ±íÊ¾Ä£ÄâÁ´±í¹¤×÷Ö¸ÕëÏòºóÒÆ¶¯
 		i=right[i];
 	}
 }
 
-// æ¨¡æ‹Ÿé“¾è¡¨æ’å…¥
+// Ä£ÄâÁ´±í²åÈë
 int simulation_insert_linker(int data[],int right[],int n,int x,int num)
 {
-	// åœ¨åŸæ¨¡æ‹Ÿé“¾è¡¨é•¿åº¦çš„åé¢æ’å…¥æ•°æ®
+	// ÔÚÔ­Ä£ÄâÁ´±í³¤¶ÈµÄºóÃæ²åÈëÊı¾İ
 	int last=++n;
 	data[last]=x;
-	// åˆ¤æ–­æ’å…¥ä½ç½®æ˜¯å¦ä¸ºlast
+	// ÅĞ¶Ï²åÈëÎ»ÖÃÊÇ·ñÎªlast
 	if(num!=last)
 	{
-		// ä½¿lastçš„rightæŒ‡å‘ä¸‹ä¸€ä¸ªæ•°æ®
+		// Ê¹lastµÄrightÖ¸ÏòÏÂÒ»¸öÊı¾İ
 		right[last]=num;
 	}
 	else
 	{
-		// ä½¿lastçš„rightæˆä¸ºå°¾æŒ‡é’ˆ
+		// Ê¹lastµÄright³ÉÎªÎ²Ö¸Õë
 		right[last]=0;
 	}
-	// ä½¿lastçš„å‰é©±rightæŒ‡å‘last
+	// Ê¹lastµÄÇ°ÇırightÖ¸Ïòlast
 	right[--num]=last;
 	return 1;
 }
